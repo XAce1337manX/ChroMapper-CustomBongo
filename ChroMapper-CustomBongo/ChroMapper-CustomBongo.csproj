@@ -1,0 +1,41 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net4.8</TargetFramework>
+        <RootNamespace>ChroMapper-CustomBongo</RootNamespace>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <LangVersion>9</LangVersion>
+        <AssemblyVersion>1.0.0</AssemblyVersion>
+        <FileVersion>1.0.0</FileVersion>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>$(ChroMapperFolder)\Plugins</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="Main">
+        <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\Main.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.TextMeshPro">
+        <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\Unity.TextMeshPro.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.ImageConversionModule">
+        <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="System.Text.Json" Version="8.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="refresh-icon.png" />
+      <EmbeddedResource Include="refresh-icon.png" />
+    </ItemGroup>
+
+</Project>
