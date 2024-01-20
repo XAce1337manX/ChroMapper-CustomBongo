@@ -3,7 +3,7 @@ using System.Reflection;
 using System.Text;
 using UnityEngine;
 
-using System.Text.Json;
+using SimpleJSON;
 
 public class CustomBongo : MonoBehaviour
 {
@@ -38,14 +38,23 @@ public class CustomBongo : MonoBehaviour
         var configPath = Path.Combine(assemblyFolder, ConfigFile);
         if (!File.Exists(configPath))
         {
-            var stream = File.Create(configPath);
-            JsonSerializer.Serialize(stream, new Config());
-            stream.Dispose();
+            using (var streamWriter = new StreamWriter(configPath, append: false))
+                streamWriter.Write(new JSONObject
+                {
+                    ["ScaleX"] = 1,
+                    ["ScaleY"] = 1,
+                    ["OffsetY"] = 0
+                }.ToString());
         }
-        
-        var configText = File.ReadAllText(configPath);
-        var config = JsonSerializer.Deserialize<Config>(configText)!;
 
+        using var streamReader = new StreamReader(configPath);
+        var configJson = JSON.Parse(streamReader.ReadToEnd());
+        var config = new Config
+        {
+            ScaleX = configJson["ScaleX"].AsFloat,
+            ScaleY = configJson["ScaleY"].AsFloat,
+            OffsetY = configJson["OffsetY"].AsFloat
+        };
         return config;
     }
 

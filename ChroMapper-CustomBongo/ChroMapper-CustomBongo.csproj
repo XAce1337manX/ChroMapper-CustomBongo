@@ -18,6 +18,9 @@
       <Reference Include="Main">
         <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\Main.dll</HintPath>
       </Reference>
+      <Reference Include="Plugins">
+        <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\Plugins.dll</HintPath>
+      </Reference>
       <Reference Include="Unity.TextMeshPro">
         <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\Unity.TextMeshPro.dll</HintPath>
       </Reference>
@@ -27,10 +30,6 @@
       <Reference Include="UnityEngine.ImageConversionModule">
         <HintPath>$(ChroMapperFolder)\ChroMapper_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
       </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-      <PackageReference Include="System.Text.Json" Version="8.0.1" />
     </ItemGroup>
 
     <ItemGroup>
