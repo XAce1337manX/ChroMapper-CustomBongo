@@ -11,8 +11,9 @@ This plugin for ChroMapper replaces the existing bongo cat with custom images. T
 
 The plugin will create a `config.json` which allows for tweaking the custom image appearance:
 
-| Key       | Effect           |
-|-----------|------------------|
-| `ScaleX`  | Horizontal scale |
-| `ScaleY`  | Vertical scale   |
-| `OffsetY` | Vertical offset  |
+| Key       | Effect            |
+|-----------|-------------------|
+| `ScaleX`  | Horizontal scale  |
+| `ScaleY`  | Vertical scale    |
+| `OffsetX` | Horizontal offset |
+| `OffsetY` | Vertical offset   |

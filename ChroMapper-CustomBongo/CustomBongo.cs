@@ -43,6 +43,7 @@ public class CustomBongo : MonoBehaviour
                 {
                     ["ScaleX"] = 1,
                     ["ScaleY"] = 1,
+                    ["OffsetX"] = 0,
                     ["OffsetY"] = 0
                 }.ToString());
         }
@@ -53,6 +54,7 @@ public class CustomBongo : MonoBehaviour
         {
             ScaleX = configJson["ScaleX"].AsFloat,
             ScaleY = configJson["ScaleY"].AsFloat,
+            OffsetX = configJson["OffsetX"].AsFloat,
             OffsetY = configJson["OffsetY"].AsFloat
         };
         return config;
@@ -100,6 +102,14 @@ public class CustomBongo : MonoBehaviour
         var updateBongoCat = bongoCat.GetType()
             .GetMethod("UpdateBongoCatState", BindingFlags.NonPublic | BindingFlags.Instance);
         updateBongoCat.Invoke(bongoCat, new object[] { true });
+
+        var bongoCatTransform = bongoCat.transform;
+        var localPosition = bongoCatTransform.localPosition;
+        localPosition = new Vector3(
+            config.OffsetX,
+            localPosition.y,
+            localPosition.z);
+        bongoCatTransform.localPosition = localPosition;
     }
 
     private Sprite CreateSpriteFromPath(string path)
@@ -116,6 +126,7 @@ public class CustomBongo : MonoBehaviour
     {
         public float ScaleX { get; set; } = 1;
         public float ScaleY { get; set; } = 1;
+        public float OffsetX { get; set; }
         public float OffsetY { get; set; }
     }
 }
